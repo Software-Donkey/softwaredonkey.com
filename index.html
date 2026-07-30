@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<!--
+     .-.  .-.
+     | |  | |     SoftwareDonkey
+     | |__| |     stubbornly good software
+    /  _  _  \    handmade, no frameworks, one donkey
+   |  (o)(o)  |
+    \  .__.  /
+     '------'
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SoftwareDonkey — Stubbornly good software</title>
+<meta name="description" content="SoftwareDonkey is an independent app studio that designs, builds, and ships its own apps. Stubbornly good software — the first apps are in the barn.">
+<meta property="og:title" content="SoftwareDonkey — Stubbornly good software">
+<meta property="og:description" content="An independent app studio that designs, builds, and ships its own apps. The first ones are in the barn.">
+<meta property="og:url" content="https://softwaredonkey.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SoftwareDonkey">
+<link rel="canonical" href="https://softwaredonkey.com/">
+<meta name="theme-color" content="#F7EDD8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%23F7EDD8'/%3E%3Cg%20transform='rotate(-16%2022.5%2030)'%3E%3Crect%20x='17'%20y='3'%20width='11'%20height='28'%20rx='5.5'%20fill='%239A8878'%20stroke='%2326201B'%20stroke-width='3'/%3E%3C/g%3E%3Cg%20transform='rotate(16%2041.5%2030)'%3E%3Crect%20x='36'%20y='3'%20width='11'%20height='28'%20rx='5.5'%20fill='%239A8878'%20stroke='%2326201B'%20stroke-width='3'/%3E%3C/g%3E%3Ccircle%20cx='32'%20cy='40'%20r='19'%20fill='%239A8878'%20stroke='%2326201B'%20stroke-width='3'/%3E%3Cellipse%20cx='32'%20cy='48'%20rx='12.5'%20ry='8.5'%20fill='%23FFFBF0'%20stroke='%2326201B'%20stroke-width='3'/%3E%3Ccircle%20cx='23.5'%20cy='35'%20r='2.8'%20fill='%2326201B'/%3E%3Ccircle%20cx='40.5'%20cy='35'%20r='2.8'%20fill='%2326201B'/%3E%3Cellipse%20cx='28'%20cy='47'%20rx='1.6'%20ry='2.3'%20fill='%2326201B'/%3E%3Cellipse%20cx='36'%20cy='47'%20rx='1.6'%20ry='2.3'%20fill='%2326201B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F7EDD8;
+    --paper:#FFFBF0;
+    --ink:#26201B;
+    --ink-soft:#4A4038;
+    --red:#D8491B;
+    --yellow:#F2B035;
+    --teal:#0B6B58;
+    --taupe:#9A8878;
+    --pink:#E39A78;
+    --brown:#5B4A3B;
+    --barn:#2E2620;
+    --display:'Bricolage Grotesque','Avenir Next','Segoe UI',system-ui,sans-serif;
+    --mono:'Space Mono',ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{overflow-x:clip;scroll-padding-top:5rem}
+  body{
+    overflow-x:clip;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--display);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--yellow);color:var(--ink)}
+  img,svg{max-width:100%;display:block}
+  a{color:var(--teal)}
+  .wrap{max-width:1080px;margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
+
+  /* ---------- skip link ---------- */
+  .skip{
+    position:absolute;left:1rem;top:-4rem;z-index:100;
+    background:var(--ink);color:var(--cream);
+    font:700 .85rem var(--mono);
+    padding:.7em 1em;border-radius:0 0 10px 10px;text-decoration:none;
+  }
+  .skip:focus{top:0}
+
+  /* ---------- header ---------- */
+  .site-head{
+    position:sticky;top:0;z-index:50;
+    background:var(--cream);
+    border-bottom:3px solid var(--ink);
+  }
+  .head-inner{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    padding-block:.75rem;
+  }
+  .brand{
+    display:inline-flex;align-items:center;gap:.6rem;
+    text-decoration:none;color:var(--ink);
+  }
+  .brand .mark{width:34px;height:34px;flex:none}
+  .wordmark{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(1.2rem,4vw,1.35rem);
+    letter-spacing:-.01em;white-space:nowrap;
+  }
+  .wordmark .dk{color:var(--red)}
+  .head-link{
+    font:700 .85rem var(--mono);
+    color:var(--ink);text-decoration:none;white-space:nowrap;
+    border-bottom:3px solid var(--yellow);
+    padding-bottom:.15em;
+  }
+  .head-link:hover{border-bottom-color:var(--red)}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    font:700 .95rem/1.1 var(--mono);
+    color:var(--ink);text-decoration:none;
+    background:var(--yellow);
+    border:3px solid var(--ink);border-radius:12px;
+    padding:.9em 1.25em;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .btn--ghost{background:var(--paper)}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .btn:active{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--ink)}
+  .barn .btn{box-shadow:4px 4px 0 #120e0b}
+  .barn .btn:hover{box-shadow:6px 6px 0 #120e0b}
+  .barn .btn:active{box-shadow:2px 2px 0 #120e0b}
+
+  :focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+
+  /* ---------- hero ---------- */
+  .hero-inner{
+    display:grid;gap:1.5rem;align-items:center;
+    padding-block:clamp(2.25rem,7vw,5.5rem) clamp(3rem,9vw,6rem);
+  }
+  .hero-copy{text-align:center}
+  .eyebrow{
+    font:700 .78rem var(--mono);
+    letter-spacing:.18em;text-transform:uppercase;
+    color:var(--teal);
+  }
+  .hero h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.35rem,7.5vw,4.6rem);
+    line-height:1.03;letter-spacing:-.015em;
+    margin:.5rem 0 1.1rem;
+    text-wrap:balance;
+  }
+  .squiggle{
+    display:inline-block;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 9' width='40' height='9'%3E%3Cpath d='M0 6.5 Q5 1.5 10 6.5 T20 6.5 T30 6.5 T40 6.5' fill='none' stroke='%23D8491B' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:repeat-x;
+    background-position:0 100%;
+    background-size:40px 9px;
+    padding-bottom:.1em;
+  }
+  .hero .lede{
+    max-width:34rem;margin-inline:auto;
+    font-size:clamp(1.02rem,2.4vw,1.2rem);
+    color:var(--ink-soft);
+  }
+  .cta-row{
+    display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;
+    margin-top:1.75rem;
+  }
+
+  /* hero art */
+  .hero-art{
+    order:-1;
+    position:relative;
+    display:flex;justify-content:center;
+    padding:1.25rem .5rem 1.75rem;
+  }
+  .hero-art::before{
+    content:"";position:absolute;inset:0 8%;z-index:0;
+    background-image:radial-gradient(var(--ink) 1.15px,transparent 1.15px);
+    background-size:15px 15px;
+    opacity:.12;
+    -webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);
+    mask-image:radial-gradient(closest-side,#000 55%,transparent);
+  }
+  .mascot-btn{
+    position:relative;z-index:1;
+    background:none;border:0;padding:.25rem;cursor:pointer;
+    border-radius:28px;
+    transform:rotate(-2deg);
+  }
+  .mascot-btn svg{
+    width:clamp(215px,52vw,330px);height:auto;
+    filter:
+      drop-shadow(3px 0 0 var(--paper))
+      drop-shadow(-3px 0 0 var(--paper))
+      drop-shadow(0 3px 0 var(--paper))
+      drop-shadow(0 -3px 0 var(--paper))
+      drop-shadow(7px 9px 0 rgba(38,32,27,.85));
+  }
+  .bubble{
+    position:absolute;z-index:2;
+    top:2%;right:4%;
+    font:700 .9rem var(--mono);
+    background:var(--paper);border:3px solid var(--ink);border-radius:12px 12px 12px 2px;
+    padding:.45em .8em;
+    box-shadow:3px 3px 0 var(--ink);
+    transform:rotate(3deg);
+  }
+  .bubble:empty{opacity:0;visibility:hidden}
+  .seal{
+    position:absolute;z-index:2;
+    bottom:-4px;left:2%;
+    width:clamp(84px,17vw,116px);height:auto;
+  }
+  .spark{position:absolute;z-index:0}
+  .spark.s1{top:4%;right:10%;width:34px;transform:rotate(12deg)}
+  .spark.s2{top:16%;left:6%;width:22px;transform:rotate(-14deg)}
+  .spark.s3{bottom:10%;right:4%;width:26px;transform:rotate(22deg)}
+
+  /* ear wiggle + pupils */
+  .ear{transform-box:fill-box;transform-origin:50% 100%}
+  .pupil{will-change:transform}
+  @media (prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth}
+    .btn{transition:transform .15s ease,box-shadow .15s ease}
+    .bubble{transition:opacity .2s ease,visibility .2s ease}
+    .mascot-btn{transition:transform .25s ease}
+    .mascot-btn:hover{transform:rotate(0deg) scale(1.015)}
+    .seal{animation:spin 30s linear infinite}
+    .braying .ear-l{animation:wigL .7s ease-in-out both}
+    .braying .ear-r{animation:wigR .7s ease-in-out .06s both}
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes wigL{0%,100%{transform:rotate(0)}30%{transform:rotate(-10deg)}65%{transform:rotate(6deg)}}
+  @keyframes wigR{0%,100%{transform:rotate(0)}30%{transform:rotate(10deg)}65%{transform:rotate(-6deg)}}
+
+  /* ---------- stripe divider ---------- */
+  .stripe{
+    height:16px;
+    border-block:3px solid var(--ink);
+    background:repeating-linear-gradient(-45deg,
+      var(--red) 0 14px,
+      var(--cream) 14px 28px,
+      var(--teal) 28px 42px,
+      var(--cream) 42px 56px,
+      var(--yellow) 56px 70px,
+      var(--cream) 70px 84px);
+  }
+
+  /* ---------- what we do ---------- */
+  .work{padding-block:clamp(3.25rem,8vw,5.5rem)}
+  .section-head{max-width:44rem;margin-bottom:2.25rem}
+  .work h2,.barn h2{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(1.75rem,4.6vw,2.7rem);
+    line-height:1.1;letter-spacing:-.01em;
+    margin:.45rem 0 .9rem;
+    text-wrap:balance;
+  }
+  .section-head p{color:var(--ink-soft);max-width:36rem}
+  .cards{display:grid;gap:1.25rem;grid-template-columns:1fr}
+  .card{
+    background:var(--paper);
+    border:3px solid var(--ink);border-radius:16px;
+    padding:1.4rem 1.4rem 1.55rem;
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+  .chip{
+    width:56px;height:56px;flex:none;
+    border:3px solid var(--ink);border-radius:14px;
+    display:grid;place-items:center;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .chip svg{width:32px;height:32px}
+  .chip--red{background:var(--red)}
+  .chip--teal{background:var(--teal)}
+  .chip--yellow{background:var(--yellow)}
+  .num{
+    font:700 .72rem var(--mono);letter-spacing:.1em;
+    background:var(--yellow);
+    border:2px solid var(--ink);border-radius:7px;
+    padding:.2em .55em;
+  }
+  .card h3{
+    font-family:var(--display);font-weight:800;
+    font-size:1.28rem;letter-spacing:-.01em;
+    margin-bottom:.4rem;
+  }
+  .card .kicker{
+    font:700 .72rem var(--mono);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--teal);display:block;margin-bottom:.35rem;
+  }
+  .card p{color:var(--ink-soft);font-size:.98rem}
+
+  /* ---------- marquee ---------- */
+  .marquee{
+    overflow:hidden;
+    background:var(--ink);
+    border-block:3px solid var(--yellow);
+    padding:.7rem 0;
+  }
+  .marquee-track{display:flex;width:max-content}
+  .marquee-track span{
+    white-space:nowrap;
+    font:700 .82rem var(--mono);
+    letter-spacing:.22em;
+    color:var(--yellow);
+    padding-right:1rem;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .marquee-track{animation:scroll 30s linear infinite}
+  }
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- barn ---------- */
+  .barn{background:var(--barn);color:var(--cream);padding-block:clamp(3.25rem,8vw,5.5rem)}
+  .barn .eyebrow{color:var(--yellow)}
+  .barn h2{color:var(--cream)}
+  .barn-grid{display:grid;gap:2.5rem;align-items:center}
+  .barn-art{display:grid;justify-items:center;gap:.8rem}
+  .barn-door{width:min(320px,86%)}
+  .barn-note{font:700 .78rem var(--mono);letter-spacing:.14em;color:#CBBFA8}
+  .barn-copy p{color:#EFE3CB;max-width:34rem}
+  .barn-copy .cta-row{justify-content:flex-start;margin-top:1.6rem}
+
+  /* ---------- footer ---------- */
+  .site-foot{border-top:3px solid var(--ink);background:var(--cream)}
+  .foot-inner{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    gap:.9rem 2rem;
+    padding-block:1.6rem;
+  }
+  .foot-brand{display:inline-flex;align-items:center;gap:.55rem;font-weight:800;font-size:1.02rem}
+  .foot-brand .mark{width:28px;height:28px}
+  .legal{font:400 .82rem var(--mono);color:var(--ink-soft)}
+  .foot-link{font:700 .85rem var(--mono);color:var(--teal)}
+  .foot-note{
+    font:400 .74rem var(--mono);color:var(--ink-soft);
+    text-align:center;padding:0 1.25rem 1.4rem;
+  }
+
+  /* ---------- larger screens ---------- */
+  @media (min-width:760px){
+    .cards{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (min-width:860px){
+    .barn-grid{grid-template-columns:.85fr 1.15fr;gap:3.5rem}
+  }
+  @media (min-width:900px){
+    .hero-inner{grid-template-columns:1.05fr .95fr;gap:2.5rem}
+    .hero-art{order:2;padding:1.5rem 0}
+    .hero-copy{text-align:left}
+    .hero .lede{margin-inline:0}
+    .cta-row{justify-content:flex-start}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- shared donkey mark -->
+<svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="mark" viewBox="0 0 128 128">
+    <g transform="rotate(-16 47 56)">
+      <rect x="38" y="2" width="18" height="54" rx="9" fill="#9A8878" stroke="#26201B" stroke-width="4"/>
+      <rect x="43" y="9" width="8" height="34" rx="4" fill="#E39A78" stroke="#26201B" stroke-width="3"/>
+    </g>
+    <g transform="rotate(16 81 56)">
+      <rect x="72" y="2" width="18" height="54" rx="9" fill="#9A8878" stroke="#26201B" stroke-width="4"/>
+      <rect x="77" y="9" width="8" height="34" rx="4" fill="#E39A78" stroke="#26201B" stroke-width="3"/>
+    </g>
+    <circle cx="64" cy="80" r="40" fill="#9A8878" stroke="#26201B" stroke-width="4"/>
+    <path d="M48 50 C49 36 57 31 60 39 C62 29 70 29 72 38 C77 32 81 38 79 50 C74 44 54 44 48 50 Z" fill="#5B4A3B" stroke="#26201B" stroke-width="3.5" stroke-linejoin="round"/>
+    <circle cx="46" cy="69" r="4.5" fill="#26201B"/>
+    <circle cx="82" cy="69" r="4.5" fill="#26201B"/>
+    <ellipse cx="64" cy="98" rx="27" ry="19" fill="#FFFBF0" stroke="#26201B" stroke-width="4"/>
+    <ellipse cx="54" cy="96" rx="3" ry="4.4" fill="#26201B"/>
+    <ellipse cx="74" cy="96" rx="3" ry="4.4" fill="#26201B"/>
+    <path d="M55 107 Q64 113 73 107" fill="none" stroke="#26201B" stroke-width="3.5" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="/" aria-label="SoftwareDonkey — home">
+      <svg class="mark" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
+      <span class="wordmark">Software<span class="dk">Donkey</span></span>
+    </a>
+    <nav aria-label="Primary">
+      <a class="head-link" href="https://github.com/jnllc" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ======================= hero ======================= -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Independent app studio &middot; est. 2026</p>
+        <h1 id="hero-h"><span class="squiggle">Stubbornly</span> good software.</h1>
+        <p class="lede">SoftwareDonkey designs, builds, and ships its own apps. Small ideas, sturdy engineering, and a flat refusal to leave anything half-done.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://github.com/jnllc" target="_blank" rel="noopener">Follow along on GitHub&nbsp;&#8599;</a>
+          <a class="btn btn--ghost" href="#barn">What&#8217;s in the barn&nbsp;&#8595;</a>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <svg class="spark s1" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 1 L14.8 9.2 L23 12 L14.8 14.8 L12 23 L9.2 14.8 L1 12 L9.2 9.2 Z" fill="#F2B035" stroke="#26201B" stroke-width="1.6"/>
+        </svg>
+        <svg class="spark s2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 1 L14.8 9.2 L23 12 L14.8 14.8 L12 23 L9.2 14.8 L1 12 L9.2 9.2 Z" fill="#0B6B58" stroke="#26201B" stroke-width="1.6"/>
+        </svg>
+        <svg class="spark s3" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 1 L14.8 9.2 L23 12 L14.8 14.8 L12 23 L9.2 14.8 L1 12 L9.2 9.2 Z" fill="#D8491B" stroke="#26201B" stroke-width="1.6"/>
+        </svg>
+
+        <button class="mascot-btn" id="mascot-btn" type="button" aria-label="The SoftwareDonkey mascot. Press for a hee-haw.">
+          <svg id="mascot-svg" viewBox="0 0 128 128" aria-hidden="true" focusable="false">
+            <g class="ear ear-l">
+              <g transform="rotate(-16 47 56)">
+                <rect x="38" y="2" width="18" height="54" rx="9" fill="#9A8878" stroke="#26201B" stroke-width="4"/>
+                <rect x="43" y="9" width="8" height="34" rx="4" fill="#E39A78" stroke="#26201B" stroke-width="3"/>
+              </g>
+            </g>
+            <g class="ear ear-r">
+              <g transform="rotate(16 81 56)">
+                <rect x="72" y="2" width="18" height="54" rx="9" fill="#9A8878" stroke="#26201B" stroke-width="4"/>
+                <rect x="77" y="9" width="8" height="34" rx="4" fill="#E39A78" stroke="#26201B" stroke-width="3"/>
+              </g>
+            </g>
+            <circle cx="64" cy="80" r="40" fill="#9A8878" stroke="#26201B" stroke-width="4"/>
+            <path d="M48 50 C49 36 57 31 60 39 C62 29 70 29 72 38 C77 32 81 38 79 50 C74 44 54 44 48 50 Z" fill="#5B4A3B" stroke="#26201B" stroke-width="3.5" stroke-linejoin="round"/>
+            <circle cx="32" cy="86" r="5.5" fill="#E39A78" opacity="0.55"/>
+            <circle cx="96" cy="86" r="5.5" fill="#E39A78" opacity="0.55"/>
+            <circle cx="45" cy="69" r="8" fill="#FFFBF0" stroke="#26201B" stroke-width="3"/>
+            <circle cx="83" cy="69" r="8" fill="#FFFBF0" stroke="#26201B" stroke-width="3"/>
+            <circle class="pupil" cx="45" cy="69" r="3.6" fill="#26201B"/>
+            <circle class="pupil" cx="83" cy="69" r="3.6" fill="#26201B"/>
+            <ellipse cx="64" cy="98" rx="27" ry="19" fill="#FFFBF0" stroke="#26201B" stroke-width="4"/>
+            <ellipse cx="54" cy="96" rx="3" ry="4.4" fill="#26201B"/>
+            <ellipse cx="74" cy="96" rx="3" ry="4.4" fill="#26201B"/>
+            <path d="M55 107 Q64 113 73 107" fill="none" stroke="#26201B" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="bubble" id="bray" role="status" aria-live="polite"></div>
+
+        <svg class="seal" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+          <defs>
+            <path id="sealpath" d="M60 60 m -44 0 a 44 44 0 1 1 88 0 a 44 44 0 1 1 -88 0"/>
+          </defs>
+          <circle cx="60" cy="60" r="57" fill="#F2B035" stroke="#26201B" stroke-width="4"/>
+          <circle cx="60" cy="60" r="31" fill="none" stroke="#26201B" stroke-width="1.5" stroke-dasharray="2 4"/>
+          <text font-size="11.5" letter-spacing="1" fill="#26201B" font-weight="700" font-family="'Space Mono',monospace">
+            <textPath href="#sealpath" textLength="272">STUBBORNLY GOOD &#183; EST. 2026 &#183;</textPath>
+          </text>
+          <path d="M60 44 L63.5 56.5 L76 60 L63.5 63.5 L60 76 L56.5 63.5 L44 60 L56.5 56.5 Z" fill="#D8491B" stroke="#26201B" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe" aria-hidden="true"></div>
+
+  <!-- ======================= what we do ======================= -->
+  <section class="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The job</p>
+        <h2 id="work-h">We do the donkey work.</h2>
+        <p>SoftwareDonkey is an independent app studio. Every app under this brand is ours end to end &mdash; imagined, designed, built, and hauled over the finish line in&#8209;house.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-top">
+            <span class="chip chip--red" aria-hidden="true">
+              <svg viewBox="0 0 32 32" focusable="false">
+                <path d="M20.7 4.6l6.7 6.7L12.5 26.2l-8.9 2.2 2.2-8.9z" fill="#F7EDD8" stroke="#26201B" stroke-width="2.4" stroke-linejoin="round"/>
+                <path d="M17 8.3l6.7 6.7" stroke="#26201B" stroke-width="2.4"/>
+                <path d="M5.8 19.5l6.7 6.7" stroke="#26201B" stroke-width="2.4"/>
+              </svg>
+            </span>
+            <span class="num">01</span>
+          </div>
+          <span class="kicker">Design</span>
+          <h3>Opinionated by default</h3>
+          <p>Small apps with strong points of view. We sweat the details until the interface feels obvious &mdash; then sweat them again.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <span class="chip chip--teal" aria-hidden="true">
+              <svg viewBox="0 0 32 32" focusable="false">
+                <rect x="4" y="5.5" width="24" height="9" rx="2.5" fill="#F7EDD8" stroke="#26201B" stroke-width="2.4"/>
+                <rect x="13.4" y="14.5" width="5.2" height="13" rx="2" fill="#F2B035" stroke="#26201B" stroke-width="2.4"/>
+              </svg>
+            </span>
+            <span class="num">02</span>
+          </div>
+          <span class="kicker">Build</span>
+          <h3>Sturdy beats shiny</h3>
+          <p>Dependable, boring&#8209;on&#8209;purpose engineering. We pick tools that pull their weight and skip whatever&#8217;s trending this week.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-top">
+            <span class="chip chip--yellow" aria-hidden="true">
+              <svg viewBox="0 0 32 32" focusable="false">
+                <rect x="4.5" y="8" width="23" height="18" rx="2.5" fill="#F7EDD8" stroke="#26201B" stroke-width="2.4"/>
+                <path d="M4.5 14h23" stroke="#26201B" stroke-width="2.4"/>
+                <rect x="13.4" y="8" width="5.2" height="18" fill="#D8491B" stroke="#26201B" stroke-width="2.4"/>
+              </svg>
+            </span>
+            <span class="num">03</span>
+          </div>
+          <span class="kicker">Ship</span>
+          <h3>Carried all the way</h3>
+          <p>Ideas are cheap; finished is rare. We specialize in the last stubborn mile &mdash; the part where everyone else turns back.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= marquee ======================= -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>STUBBORN BY DESIGN &#10038; BUILT TO CARRY &#10038; SHIPPED, NOT PROMISED &#10038; HEE&#8209;HAW &#10038;&nbsp;</span>
+      <span>STUBBORN BY DESIGN &#10038; BUILT TO CARRY &#10038; SHIPPED, NOT PROMISED &#10038; HEE&#8209;HAW &#10038;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ======================= barn ======================= -->
+  <section class="barn" id="barn" aria-labelledby="barn-h">
+    <div class="wrap barn-grid">
+      <div class="barn-art">
+        <svg class="barn-door" viewBox="0 0 220 176" aria-hidden="true" focusable="false">
+          <rect x="2" y="2" width="216" height="18" rx="4" fill="#F2B035" stroke="#F7EDD8" stroke-width="3"/>
+          <rect x="14" y="26" width="92" height="142" rx="6" fill="#D8491B" stroke="#F7EDD8" stroke-width="3"/>
+          <rect x="114" y="26" width="92" height="142" rx="6" fill="#D8491B" stroke="#F7EDD8" stroke-width="3"/>
+          <path d="M22 34 L98 160 M98 34 L22 160" stroke="#F7EDD8" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+          <path d="M122 34 L198 160 M198 34 L122 160" stroke="#F7EDD8" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+          <circle cx="101" cy="100" r="3.5" fill="#F7EDD8"/>
+          <circle cx="119" cy="100" r="3.5" fill="#F7EDD8"/>
+          <g transform="rotate(-3 110 93)">
+            <rect x="72" y="76" width="76" height="34" rx="6" fill="#F2B035" stroke="#26201B" stroke-width="3"/>
+            <text x="110" y="98" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="3" fill="#26201B" font-family="'Space Mono',monospace">SOON</text>
+          </g>
+        </svg>
+        <p class="barn-note">NO PEEKING.</p>
+      </div>
+
+      <div class="barn-copy">
+        <p class="eyebrow">Coming soon</p>
+        <h2 id="barn-h">The first apps are in the barn.</h2>
+        <p>A small herd is getting groomed for release &mdash; real software, not vaporware, which is exactly why there&#8217;s nothing to show yet. No waitlist, no teaser screenshots, no hype cycle. When they&#8217;re ready to pull their weight, they&#8217;ll show up right here.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://github.com/jnllc" target="_blank" rel="noopener">Watch the workshop on GitHub&nbsp;&#8599;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <span class="foot-brand">
+      <svg class="mark" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
+      <span>Software<span style="color:var(--red)">Donkey</span></span>
+    </span>
+    <p class="legal">SoftwareDonkey is a DBA of JacobNollette.com LLC &middot; &copy; 2026</p>
+    <a class="foot-link" href="https://github.com/jnllc" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
+  </div>
+  <p class="foot-note">Assembled with uncommon stubbornness.</p>
+</footer>
+
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* pupils follow the pointer */
+  var mascot = document.getElementById('mascot-svg');
+  var pupils = document.querySelectorAll('.pupil');
+  if (mascot && pupils.length && !reduced) {
+    var raf = null;
+    window.addEventListener('pointermove', function (e) {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null;
+        var r = mascot.getBoundingClientRect();
+        var cx = r.left + r.width / 2;
+        var cy = r.top + r.height * 0.45;
+        var dx = e.clientX - cx;
+        var dy = e.clientY - cy;
+        var d = Math.hypot(dx, dy) || 1;
+        var m = Math.min(1, d / 240);
+        var x = (dx / d) * 3.2 * m;
+        var y = (dy / d) * 3.2 * m;
+        for (var i = 0; i < pupils.length; i++) {
+          pupils[i].style.transform = 'translate(' + x + 'px,' + y + 'px)';
+        }
+      });
+    }, { passive: true });
+  }
+
+  /* press the donkey, get a hee-haw */
+  var btn = document.getElementById('mascot-btn');
+  var bubble = document.getElementById('bray');
+  if (btn && bubble) {
+    var t;
+    btn.addEventListener('click', function () {
+      btn.classList.remove('braying');
+      void btn.offsetWidth; /* restart animation */
+      btn.classList.add('braying');
+      bubble.textContent = 'hee-haw.';
+      clearTimeout(t);
+      t = setTimeout(function () {
+        bubble.textContent = '';
+        btn.classList.remove('braying');
+      }, 1500);
+    });
+  }
+
+  console.log('%c hee-haw. ', 'background:#F2B035;color:#26201B;font-weight:bold;border-radius:4px;', '— SoftwareDonkey');
+})();
+</script>
+</body>
+</html>
