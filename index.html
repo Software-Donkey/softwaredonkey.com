@@ -408,6 +408,29 @@
   .barn-copy .cta-row{justify-content:flex-start;margin-top:1.6rem}
 
   /* ---------- footer ---------- */
+  /* ---------- contact ---------- */
+  .contact{
+    background:var(--paper);
+    border-block:3px solid var(--ink);
+    padding-block:clamp(3rem,7vw,4.75rem);
+    text-align:center;
+  }
+  .contact h2{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(1.75rem,4.6vw,2.7rem);
+    line-height:1.1;letter-spacing:-.01em;
+    margin:.45rem 0 .9rem;
+    text-wrap:balance;
+  }
+  .contact .lede{
+    max-width:32rem;margin-inline:auto;
+    color:var(--ink-soft);
+    font-size:clamp(1rem,2.2vw,1.12rem);
+  }
+  .contact .cta-row{justify-content:center}
+  .contact .btn{word-break:break-word}
+
+  /* ---------- footer ---------- */
   .site-foot{border-top:3px solid var(--ink);background:var(--cream)}
   .foot-inner{
     display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
@@ -418,14 +441,23 @@
   .foot-brand .mark{width:28px;height:28px}
   .legal{font:400 .82rem var(--mono);color:var(--ink-soft)}
   .foot-link{font:700 .85rem var(--mono);color:var(--teal)}
+  .foot-contact{
+    display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.1rem;
+    font:700 .85rem var(--mono);
+  }
+  .foot-contact a{color:var(--teal);text-decoration:none;border-bottom:2px solid var(--yellow)}
+  .foot-contact a:hover{border-bottom-color:var(--red)}
   .foot-note{
     font:400 .74rem var(--mono);color:var(--ink-soft);
     text-align:center;padding:0 1.25rem 1.4rem;
   }
+  .foot-note--legal{padding-bottom:.4rem}
 
   /* ---------- larger screens ---------- */
-  @media (max-width:479px){
-    .head-link--herd{display:none}
+  /* Three nav links do not fit beside the wordmark on a phone. Contact is the
+     one that earns the space; the herd and GitHub are both still in the page. */
+  @media (max-width:559px){
+    .head-link--herd,.head-link--gh{display:none}
   }
   @media (min-width:620px){
     .herd-grid,.model-grid{grid-template-columns:repeat(2,1fr)}
@@ -675,7 +707,8 @@
     </a>
     <nav aria-label="Primary">
       <a class="head-link head-link--herd" href="#herd">The&nbsp;herd</a>
-      <a class="head-link" href="https://github.com/software-donkey" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
+      <a class="head-link" href="#contact">Contact</a>
+      <a class="head-link head-link--gh" href="https://github.com/software-donkey" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
     </nav>
   </div>
 </header>
@@ -1030,6 +1063,19 @@
     </div>
   </section>
 
+  <!-- ======================= contact ======================= -->
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <p class="eyebrow">Get in touch</p>
+      <h2 id="contact-h">Talk to a human.</h2>
+      <p class="lede">The donkeys do the hauling. A person still answers the mail &mdash; so if you have work that needs carrying, say so.</p>
+      <div class="cta-row">
+        <a class="btn" href="mailto:inbox@softwaredonkey.com">inbox@softwaredonkey.com</a>
+        <a class="btn btn--ghost" href="tel:+19522325181">952&#8209;232&#8209;5181</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site-foot">
@@ -1038,9 +1084,13 @@
       <svg class="mark" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
       <span>Software<span style="color:var(--red)">Donkey</span></span>
     </span>
-    <p class="legal">SoftwareDonkey is a DBA of JacobNollette.com LLC &middot; &copy; 2026</p>
+    <p class="foot-contact">
+      <a href="mailto:inbox@softwaredonkey.com">inbox@softwaredonkey.com</a>
+      <a href="tel:+19522325181">952&#8209;232&#8209;5181</a>
+    </p>
     <a class="foot-link" href="https://github.com/software-donkey" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
   </div>
+  <p class="foot-note foot-note--legal">SoftwareDonkey is a DBA of JacobNollette.com LLC &middot; &copy; 2026</p>
   <p class="foot-note">Assembled with uncommon stubbornness.</p>
 </footer>
 
