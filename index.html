@@ -13,7 +13,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SoftwareDonkey — Stubbornly good software</title>
-<meta name="description" content="SoftwareDonkey is an independent app studio that designs, builds, and ships its own apps. Stubbornly good software — the first apps are in the barn.">
+<meta name="description" content="SoftwareDonkey is an independent app studio that designs, builds, and ships its own apps. Stubbornly good software — meet the herd, and the first apps are in the barn.">
 <meta property="og:title" content="SoftwareDonkey — Stubbornly good software">
 <meta property="og:description" content="An independent app studio that designs, builds, and ships its own apps. The first ones are in the barn.">
 <meta property="og:url" content="https://softwaredonkey.com/">
@@ -94,6 +94,7 @@
     padding-bottom:.15em;
   }
   .head-link:hover{border-bottom-color:var(--red)}
+  .site-head nav{display:flex;align-items:center;gap:clamp(.85rem,3vw,1.4rem)}
 
   /* ---------- buttons ---------- */
   .btn{
@@ -206,6 +207,8 @@
   @media (prefers-reduced-motion:no-preference){
     html{scroll-behavior:smooth}
     .btn{transition:transform .15s ease,box-shadow .15s ease}
+    .donkey{transition:transform .15s ease,box-shadow .15s ease}
+    .donkey:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
     .bubble{transition:opacity .2s ease,visibility .2s ease}
     .mascot-btn{transition:transform .25s ease}
     .mascot-btn:hover{transform:rotate(0deg) scale(1.015)}
@@ -270,11 +273,108 @@
     font-size:1.28rem;letter-spacing:-.01em;
     margin-bottom:.4rem;
   }
-  .card .kicker{
+  .kicker{
     font:700 .72rem var(--mono);letter-spacing:.16em;text-transform:uppercase;
     color:var(--teal);display:block;margin-bottom:.35rem;
   }
   .card p{color:var(--ink-soft);font-size:.98rem}
+
+  /* ---------- the herd ---------- */
+  .herd{
+    background:var(--paper);
+    border-block:3px solid var(--ink);
+    padding-block:clamp(3.25rem,8vw,5.5rem);
+  }
+  .herd h2{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(1.75rem,4.6vw,2.7rem);
+    line-height:1.1;letter-spacing:-.01em;
+    margin:.45rem 0 .9rem;
+    text-wrap:balance;
+  }
+  .herd-grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
+  .donkey{
+    display:flex;flex-direction:column;gap:.85rem;
+    background:var(--cream);
+    border:3px solid var(--ink);border-radius:16px;
+    padding:1.15rem 1.15rem 1.3rem;
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .donkey-top{display:flex;align-items:center;gap:.9rem}
+  .portrait{
+    width:88px;height:88px;flex:none;
+    border:3px solid var(--ink);border-radius:14px;
+    box-shadow:3px 3px 0 var(--ink);
+    overflow:hidden;background:var(--ink);
+  }
+  .portrait svg{width:100%;height:100%}
+  .donkey-id{flex:1 1 auto;min-width:0}
+  .donkey h3{
+    font-family:var(--display);font-weight:800;
+    font-size:1.32rem;letter-spacing:-.01em;line-height:1.1;
+  }
+  .donkey .role{
+    font:700 .7rem var(--mono);letter-spacing:.15em;text-transform:uppercase;
+    color:var(--teal);display:block;margin-top:.25rem;
+  }
+  .donkey .num{align-self:flex-start}
+  .donkey p{color:var(--ink-soft);font-size:.95rem}
+  .herd-note{
+    margin-top:2.25rem;
+    font:700 .8rem var(--mono);letter-spacing:.1em;
+    color:var(--ink-soft);text-align:center;
+  }
+
+  /* ---------- the model ---------- */
+  .model{padding-block:clamp(3.25rem,8vw,5.5rem)}
+  .model h2,.field h2{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(1.75rem,4.6vw,2.7rem);
+    line-height:1.1;letter-spacing:-.01em;
+    margin:.45rem 0 .9rem;
+    text-wrap:balance;
+  }
+  .model-grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
+  .model-card{
+    background:var(--paper);
+    border:3px solid var(--ink);border-radius:16px;
+    padding:1.45rem 1.4rem 1.6rem;
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .model-card h3{
+    font-family:var(--display);font-weight:800;
+    font-size:1.22rem;letter-spacing:-.01em;
+    margin-bottom:.45rem;
+  }
+  .model-card p{color:var(--ink-soft);font-size:.96rem}
+
+  /* ---------- field notes ---------- */
+  .field{
+    background:var(--paper);
+    border-block:3px solid var(--ink);
+    padding-block:clamp(3.25rem,8vw,5.5rem);
+  }
+  .notes{display:grid;gap:1.25rem}
+  .note{
+    background:var(--cream);
+    border:3px solid var(--ink);border-left-width:14px;border-radius:16px;
+    padding:1.35rem 1.4rem 1.5rem;
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .note--red{border-left-color:var(--red)}
+  .note--teal{border-left-color:var(--teal)}
+  .note--yellow{border-left-color:var(--yellow)}
+  .note h3{
+    font-family:var(--display);font-weight:800;
+    font-size:1.24rem;letter-spacing:-.01em;
+    margin-bottom:.5rem;
+  }
+  .note p{color:var(--ink-soft);font-size:.97rem;max-width:56rem}
+  .field-note{
+    margin-top:2rem;
+    font:700 .8rem var(--mono);letter-spacing:.08em;
+    color:var(--ink-soft);text-wrap:balance;
+  }
 
   /* ---------- marquee ---------- */
   .marquee{
@@ -324,8 +424,17 @@
   }
 
   /* ---------- larger screens ---------- */
+  @media (max-width:479px){
+    .head-link--herd{display:none}
+  }
+  @media (min-width:620px){
+    .herd-grid,.model-grid{grid-template-columns:repeat(2,1fr)}
+  }
   @media (min-width:760px){
     .cards{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (min-width:980px){
+    .herd-grid,.model-grid{grid-template-columns:repeat(3,1fr)}
   }
   @media (min-width:860px){
     .barn-grid{grid-template-columns:.85fr 1.15fr;gap:3.5rem}
@@ -362,6 +471,200 @@
     <ellipse cx="74" cy="96" rx="3" ry="4.4" fill="#26201B"/>
     <path d="M55 107 Q64 113 73 107" fill="none" stroke="#26201B" stroke-width="3.5" stroke-linecap="round"/>
   </symbol>
+
+  <!-- ===================================================================
+       The herd. One symbol per agent, all on the same donkey geometry:
+       ears, head, jaw, muzzle, eyes — then a palette and one prop each.
+       Flint, Ridge, Fin and Ward are their working Slack app icons,
+       carried over unchanged. Atlas and Jack are drawn to match.
+       =================================================================== -->
+
+  <!-- Atlas — administration. Orbit ring and a headset: the one that answers. -->
+  <symbol id="d-atlas" viewBox="0 0 512 512">
+    <rect width="512" height="512" fill="#16213c"/>
+    <circle cx="256" cy="252" r="196" fill="none" stroke="#3f63b5" stroke-width="10"/>
+    <circle cx="256" cy="56" r="15" fill="#7fe0d4"/>
+    <circle cx="96" cy="364" r="11" fill="#7fe0d4"/>
+    <circle cx="416" cy="364" r="11" fill="#7fe0d4"/>
+    <circle cx="452" cy="150" r="5" fill="#7fe0d4"/>
+    <circle cx="62" cy="172" r="4" fill="#7fe0d4"/>
+    <g transform="rotate(-18 178 148)">
+      <ellipse cx="178" cy="148" rx="36" ry="86" fill="#9d948b"/>
+      <ellipse cx="178" cy="152" rx="18" ry="60" fill="#5c5249"/>
+    </g>
+    <g transform="rotate(18 334 148)">
+      <ellipse cx="334" cy="148" rx="36" ry="86" fill="#9d948b"/>
+      <ellipse cx="334" cy="152" rx="18" ry="60" fill="#5c5249"/>
+    </g>
+    <ellipse cx="256" cy="252" rx="114" ry="106" fill="#9d948b"/>
+    <ellipse cx="256" cy="356" rx="82" ry="72" fill="#9d948b"/>
+    <path d="M256 132 c26 18 34 44 30 68 h-60 c-4 -24 4 -50 30 -68 z" fill="#5c5249"/>
+    <ellipse cx="256" cy="366" rx="68" ry="55" fill="#e6ddd2"/>
+    <ellipse cx="230" cy="352" rx="9" ry="13" fill="#16213c"/>
+    <ellipse cx="282" cy="352" rx="9" ry="13" fill="#16213c"/>
+    <path d="M230 392 q26 20 52 0" stroke="#16213c" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="197" cy="252" r="16" fill="#16213c"/>
+    <circle cx="315" cy="252" r="16" fill="#16213c"/>
+    <circle cx="202" cy="246" r="5" fill="#ffffff"/>
+    <circle cx="320" cy="246" r="5" fill="#ffffff"/>
+  </symbol>
+
+  <!-- Flint — the houses. Its Slack icon, unchanged. -->
+  <symbol id="d-flint" viewBox="0 0 512 512">
+    <rect width="512" height="512" fill="#39414b"/>
+    <g transform="rotate(-18 178 148)">
+      <ellipse cx="178" cy="148" rx="36" ry="86" fill="#cbc4b8"/>
+      <ellipse cx="178" cy="152" rx="18" ry="60" fill="#8d7f78"/>
+    </g>
+    <g transform="rotate(18 334 148)">
+      <ellipse cx="334" cy="148" rx="36" ry="86" fill="#cbc4b8"/>
+      <ellipse cx="334" cy="152" rx="18" ry="60" fill="#8d7f78"/>
+    </g>
+    <ellipse cx="256" cy="252" rx="114" ry="106" fill="#cbc4b8"/>
+    <ellipse cx="256" cy="356" rx="82" ry="72" fill="#cbc4b8"/>
+    <path d="M256 132 c26 18 34 44 30 68 h-60 c-4 -24 4 -50 30 -68 z" fill="#8d7f78"/>
+    <ellipse cx="256" cy="366" rx="68" ry="55" fill="#a89e94"/>
+    <ellipse cx="230" cy="352" rx="9" ry="13" fill="#39414b"/>
+    <ellipse cx="282" cy="352" rx="9" ry="13" fill="#39414b"/>
+    <path d="M230 392 q26 20 52 0" stroke="#39414b" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="197" cy="240" r="16" fill="#39414b"/>
+    <circle cx="315" cy="240" r="16" fill="#39414b"/>
+    <circle cx="202" cy="234" r="5" fill="#ffffff"/>
+    <circle cx="320" cy="234" r="5" fill="#ffffff"/>
+  </symbol>
+
+  <!-- Jack — remote hands. Ball cap and a wrench. -->
+  <symbol id="d-jack" viewBox="0 0 512 512">
+    <rect width="512" height="512" fill="#333d4a"/>
+    <polygon points="116,430 93,470 47,470 24,430 47,390 93,390" fill="#414f61"/>
+    <polygon points="484,120 467,149 433,149 416,120 433,91 467,91" fill="#414f61"/>
+    <g transform="rotate(-15 184 136)">
+      <ellipse cx="184" cy="136" rx="36" ry="88" fill="#cbc4b8"/>
+      <ellipse cx="184" cy="140" rx="18" ry="62" fill="#8d7f78"/>
+    </g>
+    <g transform="rotate(15 328 136)">
+      <ellipse cx="328" cy="136" rx="36" ry="88" fill="#cbc4b8"/>
+      <ellipse cx="328" cy="140" rx="18" ry="62" fill="#8d7f78"/>
+    </g>
+    <ellipse cx="256" cy="262" rx="114" ry="106" fill="#cbc4b8"/>
+    <ellipse cx="256" cy="366" rx="82" ry="72" fill="#cbc4b8"/>
+    <path d="M150 224 Q152 152 256 146 Q360 152 362 224 Z" fill="#2f4a6b"/>
+    <rect x="146" y="214" width="220" height="20" rx="6" fill="#24384f"/>
+    <path d="M150 232 Q256 260 362 232 L370 246 Q256 282 142 246 Z" fill="#24384f"/>
+    <g transform="rotate(-35 256 186)">
+      <rect x="249" y="180" width="14" height="36" rx="6" fill="#e6ddd2"/>
+      <circle cx="256" cy="176" r="16" fill="#e6ddd2"/>
+      <circle cx="256" cy="176" r="7.5" fill="#2f4a6b"/>
+    </g>
+    <ellipse cx="256" cy="376" rx="68" ry="55" fill="#a89e94"/>
+    <ellipse cx="230" cy="362" rx="9" ry="13" fill="#333d4a"/>
+    <ellipse cx="282" cy="362" rx="9" ry="13" fill="#333d4a"/>
+    <path d="M230 402 q26 20 52 0" stroke="#333d4a" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="197" cy="288" r="16" fill="#333d4a"/>
+    <circle cx="315" cy="288" r="16" fill="#333d4a"/>
+    <circle cx="202" cy="282" r="5" fill="#ffffff"/>
+    <circle cx="320" cy="282" r="5" fill="#ffffff"/>
+  </symbol>
+
+  <!-- Ridge — the trail. Its Slack icon, unchanged. -->
+  <symbol id="d-ridge" viewBox="0 0 512 512">
+    <rect width="512" height="512" fill="#27403a"/>
+    <circle cx="430" cy="96" r="38" fill="#e8b25c"/>
+    <path d="M0 360 L70 290 L118 326 L190 244 L252 312 L318 236 L386 300 L440 262 L512 318 V512 H0 Z" fill="#35574d"/>
+    <path d="M0 420 L84 352 L150 396 L232 330 L300 388 L372 340 L446 392 L512 360 V512 H0 Z" fill="#1d312c"/>
+    <g transform="rotate(-18 178 148)">
+      <ellipse cx="178" cy="148" rx="36" ry="86" fill="#c7a17a"/>
+      <ellipse cx="178" cy="152" rx="18" ry="60" fill="#7a5a44"/>
+    </g>
+    <g transform="rotate(18 334 148)">
+      <ellipse cx="334" cy="148" rx="36" ry="86" fill="#c7a17a"/>
+      <ellipse cx="334" cy="152" rx="18" ry="60" fill="#7a5a44"/>
+    </g>
+    <ellipse cx="256" cy="252" rx="114" ry="106" fill="#c7a17a"/>
+    <ellipse cx="256" cy="356" rx="82" ry="72" fill="#c7a17a"/>
+    <path d="M256 132 c26 18 34 44 30 68 h-60 c-4 -24 4 -50 30 -68 z" fill="#7a5a44"/>
+    <path d="M146 196 Q256 168 366 196 L370 226 Q256 198 142 226 Z" fill="#e2694a"/>
+    <path d="M144 208 Q256 181 368 208 L368 214 Q256 187 144 214 Z" fill="#f6efe6"/>
+    <ellipse cx="256" cy="366" rx="68" ry="55" fill="#e3cfb6"/>
+    <ellipse cx="230" cy="352" rx="9" ry="13" fill="#27403a"/>
+    <ellipse cx="282" cy="352" rx="9" ry="13" fill="#27403a"/>
+    <path d="M230 392 q26 20 52 0" stroke="#27403a" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="197" cy="258" r="16" fill="#27403a"/>
+    <circle cx="315" cy="258" r="16" fill="#27403a"/>
+    <circle cx="202" cy="252" r="5" fill="#ffffff"/>
+    <circle cx="320" cy="252" r="5" fill="#ffffff"/>
+  </symbol>
+
+  <!-- Fin — the ledger. Its Slack icon, unchanged. -->
+  <symbol id="d-fin" viewBox="0 0 512 512">
+    <rect width="512" height="512" fill="#123a2f"/>
+    <rect x="26" y="392" width="46" height="120" rx="6" fill="#1f5a48"/>
+    <rect x="440" y="250" width="46" height="262" rx="6" fill="#1f5a48"/>
+    <rect x="384" y="318" width="46" height="194" rx="6" fill="#1a4c3d"/>
+    <rect x="82" y="350" width="46" height="162" rx="6" fill="#1a4c3d"/>
+    <path d="M30 372 L104 330 L160 348 L408 290 L464 222" stroke="#e8c15c" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="464" cy="222" r="14" fill="#e8c15c"/>
+    <g transform="rotate(-18 178 148)">
+      <ellipse cx="178" cy="148" rx="36" ry="86" fill="#9d948b"/>
+      <ellipse cx="178" cy="152" rx="18" ry="60" fill="#5c5249"/>
+    </g>
+    <g transform="rotate(18 334 148)">
+      <ellipse cx="334" cy="148" rx="36" ry="86" fill="#9d948b"/>
+      <ellipse cx="334" cy="152" rx="18" ry="60" fill="#5c5249"/>
+    </g>
+    <ellipse cx="256" cy="252" rx="114" ry="106" fill="#9d948b"/>
+    <ellipse cx="256" cy="356" rx="82" ry="72" fill="#9d948b"/>
+    <path d="M144 200 Q256 170 368 200 L372 214 Q256 186 140 214 Z" fill="#0c2a22"/>
+    <path d="M140 212 Q256 184 372 212 L392 246 Q256 216 120 246 Z" fill="#3fae7a" opacity="0.92"/>
+    <ellipse cx="256" cy="366" rx="68" ry="55" fill="#e6ddd2"/>
+    <ellipse cx="230" cy="352" rx="9" ry="13" fill="#123a2f"/>
+    <ellipse cx="282" cy="352" rx="9" ry="13" fill="#123a2f"/>
+    <path d="M230 392 q26 20 52 0" stroke="#123a2f" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="197" cy="270" r="15" fill="#123a2f"/>
+    <circle cx="315" cy="270" r="15" fill="#123a2f"/>
+    <circle cx="202" cy="264" r="5" fill="#ffffff"/>
+    <circle cx="320" cy="264" r="5" fill="#ffffff"/>
+    <circle cx="197" cy="270" r="36" stroke="#e8c15c" stroke-width="8" fill="#ffffff" fill-opacity="0.08"/>
+    <circle cx="315" cy="270" r="36" stroke="#e8c15c" stroke-width="8" fill="#ffffff" fill-opacity="0.08"/>
+    <path d="M233 266 q23 -12 46 0" stroke="#e8c15c" stroke-width="8" fill="none" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Ward — the night watch. Its Slack icon, unchanged. -->
+  <symbol id="d-ward" viewBox="0 0 512 512">
+    <rect width="512" height="512" fill="#2b3a4a"/>
+    <circle cx="430" cy="82" r="38" fill="#f2e2a4"/>
+    <circle cx="448" cy="70" r="34" fill="#2b3a4a"/>
+    <circle cx="70" cy="70" r="5" fill="#f2e2a4"/>
+    <circle cx="110" cy="128" r="3.5" fill="#f2e2a4"/>
+    <circle cx="470" cy="190" r="4" fill="#f2e2a4"/>
+    <circle cx="44" cy="220" r="3" fill="#f2e2a4"/>
+    <g transform="rotate(-8 186 132)">
+      <ellipse cx="186" cy="132" rx="36" ry="92" fill="#9d948b"/>
+      <ellipse cx="186" cy="136" rx="18" ry="66" fill="#5c5249"/>
+    </g>
+    <g transform="rotate(8 326 132)">
+      <ellipse cx="326" cy="132" rx="36" ry="92" fill="#9d948b"/>
+      <ellipse cx="326" cy="136" rx="18" ry="66" fill="#5c5249"/>
+    </g>
+    <ellipse cx="256" cy="262" rx="114" ry="106" fill="#9d948b"/>
+    <ellipse cx="256" cy="366" rx="82" ry="72" fill="#9d948b"/>
+    <path d="M150 214 Q152 150 256 142 Q360 150 362 214 Z" fill="#1b2633"/>
+    <rect x="146" y="204" width="220" height="22" rx="6" fill="#0f1720"/>
+    <path d="M150 222 Q256 250 362 222 L370 236 Q256 272 142 236 Z" fill="#0f1720"/>
+    <path d="M256 158 L284 168 Q284 200 256 214 Q228 200 228 168 Z" fill="#e8c15c"/>
+    <path d="M256 170 L272 176 Q272 196 256 204 Q240 196 240 176 Z" fill="#1b2633"/>
+    <circle cx="256" cy="186" r="5" fill="#e8c15c"/>
+    <ellipse cx="256" cy="376" rx="68" ry="55" fill="#e6ddd2"/>
+    <ellipse cx="230" cy="362" rx="9" ry="13" fill="#2b3a4a"/>
+    <ellipse cx="282" cy="362" rx="9" ry="13" fill="#2b3a4a"/>
+    <path d="M232 402 q24 12 48 0" stroke="#2b3a4a" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <circle cx="200" cy="286" r="22" fill="#ffffff"/>
+    <circle cx="312" cy="286" r="22" fill="#ffffff"/>
+    <circle cx="203" cy="288" r="13" fill="#1b2633"/>
+    <circle cx="309" cy="288" r="13" fill="#1b2633"/>
+    <circle cx="207" cy="283" r="4" fill="#ffffff"/>
+    <circle cx="313" cy="283" r="4" fill="#ffffff"/>
+  </symbol>
 </svg>
 
 <header class="site-head">
@@ -371,6 +674,7 @@
       <span class="wordmark">Software<span class="dk">Donkey</span></span>
     </a>
     <nav aria-label="Primary">
+      <a class="head-link head-link--herd" href="#herd">The&nbsp;herd</a>
       <a class="head-link" href="https://github.com/software-donkey" target="_blank" rel="noopener">GitHub&nbsp;&#8599;</a>
     </nav>
   </div>
@@ -387,7 +691,7 @@
         <p class="lede">SoftwareDonkey designs, builds, and ships its own apps. Small ideas, sturdy engineering, and a flat refusal to leave anything half-done.</p>
         <div class="cta-row">
           <a class="btn" href="https://github.com/software-donkey" target="_blank" rel="noopener">Follow along on GitHub&nbsp;&#8599;</a>
-          <a class="btn btn--ghost" href="#barn">What&#8217;s in the barn&nbsp;&#8595;</a>
+          <a class="btn btn--ghost" href="#herd">Meet the herd&nbsp;&#8595;</a>
         </div>
       </div>
 
@@ -517,6 +821,183 @@
       <span>STUBBORN BY DESIGN &#10038; BUILT TO CARRY &#10038; SHIPPED, NOT PROMISED &#10038; HEE&#8209;HAW &#10038;&nbsp;</span>
     </div>
   </div>
+
+  <!-- ======================= the herd ======================= -->
+  <section class="herd" id="herd" aria-labelledby="herd-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The herd</p>
+        <h2 id="herd-h">Meet the donkeys.</h2>
+        <p>SoftwareDonkey runs on its own software. Six agents, each with exactly one job and no opinions about anyone else&#8217;s. They are how a small studio carries a large load.</p>
+      </div>
+
+      <div class="herd-grid">
+
+        <article class="donkey">
+          <div class="donkey-top">
+            <span class="portrait" aria-hidden="true"><svg viewBox="0 0 512 512" focusable="false"><use href="#d-atlas"/></svg></span>
+            <span class="donkey-id">
+              <h3>Atlas</h3>
+              <span class="role">Administration</span>
+            </span>
+            <span class="num">01</span>
+          </div>
+          <p>Atlas carries the paperwork &mdash; the inbox, the calendar, the renewals, everything with a date attached. It works the front door so that nothing important quietly rots in a folder.</p>
+        </article>
+
+        <article class="donkey">
+          <div class="donkey-top">
+            <span class="portrait" aria-hidden="true"><svg viewBox="0 0 512 512" focusable="false"><use href="#d-flint"/></svg></span>
+            <span class="donkey-id">
+              <h3>Flint</h3>
+              <span class="role">The houses</span>
+            </span>
+            <span class="num">02</span>
+          </div>
+          <p>Flint keeps an eye on the buildings &mdash; heat, power, water, the dull telemetry nobody reads until the day it matters. It writes the place a daily journal so the house has a memory.</p>
+        </article>
+
+        <article class="donkey">
+          <div class="donkey-top">
+            <span class="portrait" aria-hidden="true"><svg viewBox="0 0 512 512" focusable="false"><use href="#d-jack"/></svg></span>
+            <span class="donkey-id">
+              <h3>Jack</h3>
+              <span class="role">Maintenance</span>
+            </span>
+            <span class="num">03</span>
+          </div>
+          <p>Jack does the maintenance on client sites: plugins, themes, core, backups, patches, reboot &mdash; in that order, every time. It only calls an update done when the version actually moved.</p>
+        </article>
+
+        <article class="donkey">
+          <div class="donkey-top">
+            <span class="portrait" aria-hidden="true"><svg viewBox="0 0 512 512" focusable="false"><use href="#d-ridge"/></svg></span>
+            <span class="donkey-id">
+              <h3>Ridge</h3>
+              <span class="role">The trail</span>
+            </span>
+            <span class="num">04</span>
+          </div>
+          <p>Ridge is the coach &mdash; walking, hiking, yoga, the bike. It reads the training history, remembers what last week actually looked like, and is cheerfully unimpressed by excuses.</p>
+        </article>
+
+        <article class="donkey">
+          <div class="donkey-top">
+            <span class="portrait" aria-hidden="true"><svg viewBox="0 0 512 512" focusable="false"><use href="#d-fin"/></svg></span>
+            <span class="donkey-id">
+              <h3>Fin</h3>
+              <span class="role">The ledger</span>
+            </span>
+            <span class="num">05</span>
+          </div>
+          <p>Fin keeps the books &mdash; the overview, the strategy, and the bookkeeping nobody volunteers for. It shows its work and asks first, because that is the only way to trust a number.</p>
+        </article>
+
+        <article class="donkey">
+          <div class="donkey-top">
+            <span class="portrait" aria-hidden="true"><svg viewBox="0 0 512 512" focusable="false"><use href="#d-ward"/></svg></span>
+            <span class="donkey-id">
+              <h3>Ward</h3>
+              <span class="role">Night watch</span>
+            </span>
+            <span class="num">06</span>
+          </div>
+          <p>Guard donkeys are a real thing &mdash; farmers put one in with the sheep because it brays at coyotes. Ward watches the cameras, speaks up when something warrants it, and stays quiet the rest of the night.</p>
+        </article>
+
+      </div>
+
+      <p class="herd-note">ONE DONKEY, ONE JOB. THAT&#8217;S THE WHOLE ORG CHART.</p>
+    </div>
+  </section>
+
+  <!-- ======================= the model ======================= -->
+  <section class="model" id="model" aria-labelledby="model-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The model</p>
+        <h2 id="model-h">A bench, not a bot.</h2>
+        <p>One clever assistant that knows a little about everything is a party trick. A standing bench of specialists &mdash; each one resident in its own domain, on watch, with a memory of what happened last time &mdash; is an operation.</p>
+      </div>
+
+      <div class="model-grid">
+
+        <article class="model-card">
+          <span class="kicker">Specialists</span>
+          <h3>The right expert, not the nearest one</h3>
+          <p>Different work wants different judgment. Each donkey lives in one domain full-time, learns its particular failure modes, and keeps its own memory of it. You ask the one whose job it is, and it already has the context.</p>
+        </article>
+
+        <article class="model-card">
+          <span class="kicker">Monitoring</span>
+          <h3>Somebody is already watching</h3>
+          <p>Because a donkey is resident in its domain rather than summoned into it, it notices before you think to ask. Drift, a stalled job, a number that moved the wrong way, a door at the wrong hour &mdash; the first you hear of it is the thing itself, not a report you had to go run.</p>
+        </article>
+
+        <article class="model-card">
+          <span class="kicker">Two ways in</span>
+          <h3>Ask it, or just look</h3>
+          <p>Talk to a donkey in plain language and get a straight answer. Or skip the conversation entirely &mdash; the work gets published as journals, ledgers, summaries and dashboards, so the data is already sitting there when you go looking. Not every question should cost a chat.</p>
+        </article>
+
+        <article class="model-card">
+          <span class="kicker">Asynchronous</span>
+          <h3>It works while you don&#8217;t</h3>
+          <p>Hand a job off and walk away. It runs on its own schedule, at night, across the weekend, in parallel with five other jobs, and comes back when it is finished or when it genuinely needs a person. You stop being the bottleneck and you never become the babysitter.</p>
+        </article>
+
+        <article class="model-card">
+          <span class="kicker">Heavy lifting</span>
+          <h3>The long, dull, many&#8209;system jobs</h3>
+          <p>The work that flattens a week is rarely hard &mdash; it is just long, and spread across everything. A donkey plugs into the tools a business already runs &mdash; mail, documents, calendars, project boards, ticket queues, the books &mdash; and hauls one job across all of them in a single pass.</p>
+        </article>
+
+        <article class="model-card">
+          <span class="kicker">Trust</span>
+          <h3>Checkable by default</h3>
+          <p>A donkey shows its work. Changes get previewed before they are applied, bulk work gets a dry run first, and nothing is called done because a command exited quietly. The goal was never an agent you trust blindly &mdash; it is one you can check.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="stripe" aria-hidden="true"></div>
+
+  <!-- ======================= field notes ======================= -->
+  <section class="field" id="field" aria-labelledby="field-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">From the field</p>
+        <h2 id="field-h">What that looks like in practice.</h2>
+        <p>Three of the jobs the herd runs today. Not demos &mdash; the actual standing work.</p>
+      </div>
+
+      <div class="notes">
+
+        <article class="note note--red">
+          <span class="kicker">Maintenance &middot; Jack</span>
+          <h3>A maintenance window nobody sat through</h3>
+          <p>Plugins, then themes, then core, then backups, then OS patches, then the reboot &mdash; across a fleet of client sites, in that order, each step gated on the one before it. The donkey does not mark an update done because a command exited zero; it marks it done when the version actually moved. What arrives at the end is the exception list, not the transcript.</p>
+        </article>
+
+        <article class="note note--teal">
+          <span class="kicker">Telemetry &middot; Flint</span>
+          <h3>A building that keeps its own notes</h3>
+          <p>Temperature by zone, power draw, how long the lights ran, when the place was occupied &mdash; hundreds of readings collapsed every day into a short journal a person can actually read. A year later, &#8220;was last February like this?&#8221; has a real answer, because something was writing it down the whole time while nobody was reading.</p>
+        </article>
+
+        <article class="note note--yellow">
+          <span class="kicker">Bookkeeping &middot; Fin</span>
+          <h3>Books that show their work</h3>
+          <p>Categorize, reconcile, chase down the receipt that goes with the charge, and keep the personal side and the business side from bleeding into each other. Every proposed change is previewed before it is applied and every bulk pass is dry&#8209;run first &mdash; because the point of a financial agent is not that you trust it, it is that you can check it.</p>
+        </article>
+
+      </div>
+
+      <p class="field-note">FULL CASE STUDIES ARE BEING WRITTEN UP. THE SHORT VERSION: THE WORK GETS DONE WHILE YOU ARE DOING SOMETHING ELSE.</p>
+    </div>
+  </section>
 
   <!-- ======================= barn ======================= -->
   <section class="barn" id="barn" aria-labelledby="barn-h">
