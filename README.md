@@ -1,6 +1,6 @@
 # softwaredonkey.com
 
-Homepage for **SoftwareDonkey** — an independent app studio.
+Homepage for **SoftwareDonkey** — an independent app and agent studio — apps, private AI agent platforms, and training for small teams.
 SoftwareDonkey is a DBA of JacobNollette.com LLC.
 
 ## How it works
