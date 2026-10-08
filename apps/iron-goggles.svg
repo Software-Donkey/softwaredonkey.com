@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- PLACEHOLDER: a plain herd donkey until the real Iron Goggles portrait
+       (a donkey wearing goggles) replaces this file. Keep the name and the
+       512x512 square viewBox; the card crops to a rounded square. -->
+  <rect width="512" height="512" fill="#5B4A3B"/>
+  <g transform="rotate(-18 178 148)">
+    <ellipse cx="178" cy="148" rx="36" ry="86" fill="#9A8878"/>
+    <ellipse cx="178" cy="152" rx="18" ry="60" fill="#E39A78"/>
+  </g>
+  <g transform="rotate(18 334 148)">
+    <ellipse cx="334" cy="148" rx="36" ry="86" fill="#9A8878"/>
+    <ellipse cx="334" cy="152" rx="18" ry="60" fill="#E39A78"/>
+  </g>
+  <ellipse cx="256" cy="252" rx="114" ry="106" fill="#9A8878"/>
+  <ellipse cx="256" cy="356" rx="82" ry="72" fill="#9A8878"/>
+  <path d="M256 132 c26 18 34 44 30 68 h-60 c-4 -24 4 -50 30 -68 z" fill="#5B4A3B"/>
+  <ellipse cx="256" cy="366" rx="68" ry="55" fill="#FFFBF0"/>
+  <ellipse cx="230" cy="352" rx="9" ry="13" fill="#26201B"/>
+  <ellipse cx="282" cy="352" rx="9" ry="13" fill="#26201B"/>
+  <path d="M230 392 q26 20 52 0" stroke="#26201B" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <circle cx="197" cy="252" r="16" fill="#26201B"/>
+  <circle cx="315" cy="252" r="16" fill="#26201B"/>
+  <circle cx="202" cy="246" r="5" fill="#FFFFFF"/>
+  <circle cx="320" cy="246" r="5" fill="#FFFFFF"/>
+</svg>
