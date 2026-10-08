@@ -307,7 +307,7 @@
     box-shadow:3px 3px 0 var(--ink);
     overflow:hidden;background:var(--ink);
   }
-  .portrait svg{width:100%;height:100%}
+  .portrait svg,.portrait img{width:100%;height:100%}
   .donkey-id{flex:1 1 auto;min-width:0}
   .donkey h3{
     font-family:var(--display);font-weight:800;
@@ -323,6 +323,24 @@
     margin-top:2.25rem;
     font:700 .8rem var(--mono);letter-spacing:.1em;
     color:var(--ink-soft);text-align:center;
+  }
+
+  /* ---------- the apps ---------- */
+  .apps{padding-block:clamp(3.25rem,8vw,5.5rem)}
+  .apps h2{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(1.75rem,4.6vw,2.7rem);
+    line-height:1.1;letter-spacing:-.01em;
+    margin:.45rem 0 .9rem;
+    text-wrap:balance;
+  }
+  .apps .donkey{background:var(--paper)}
+  .app-status{
+    align-self:flex-start;
+    font:700 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;
+    background:var(--cream);color:var(--ink);
+    border:2px solid var(--ink);border-radius:7px;
+    padding:.25em .6em;
   }
 
   /* ---------- the model ---------- */
@@ -1037,6 +1055,36 @@
       </div>
 
       <p class="field-note">FULL CASE STUDIES ARE BEING WRITTEN UP. THE SHORT VERSION: THE WORK GETS DONE WHILE YOU ARE DOING SOMETHING ELSE.</p>
+    </div>
+  </section>
+
+  <!-- ======================= the apps ======================= -->
+  <!-- Each app is a .donkey card. Its portrait is a square SVG in apps/,
+       named after the app (apps/<app-name>.svg, 512x512 viewBox). -->
+  <section class="apps" id="apps" aria-labelledby="apps-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The apps</p>
+        <h2 id="apps-h">Apps with a work ethic.</h2>
+        <p>The studio builds the tools it wants to use, then uses them hard. These are in the workshop now &mdash; listed so you know they exist, not because they are finished.</p>
+      </div>
+
+      <div class="herd-grid">
+
+        <article class="donkey">
+          <div class="donkey-top">
+            <span class="portrait" aria-hidden="true"><img src="apps/iron-goggles.svg" alt="" width="88" height="88"></span>
+            <span class="donkey-id">
+              <h3>Iron Goggles</h3>
+              <span class="role">Remote desktop &middot; Vision&nbsp;Pro</span>
+            </span>
+            <span class="num">01</span>
+          </div>
+          <p>A native visionOS client for RustDesk. Every remote desktop is a window you can move and resize, as many at once as you like. Drive it with a Bluetooth mouse, trackpad and keyboard, or just look and pinch. A hand gesture starts on&#8209;device dictation that types straight over the wire. Connections ride out sleep and network changes and reconnect on their own. Built for your own self&#8209;hosted RustDesk server &mdash; over Tailscale, say.</p>
+          <span class="app-status">In development</span>
+        </article>
+
+      </div>
     </div>
   </section>
 
